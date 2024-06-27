@@ -169,16 +169,16 @@ sectionAttacks c =
           , th [] [ text "Damage/Type" ]
           ]
         ]
-      , tbody [] (List.indexedMap (rowAttack c attacks) (attacks.get c))
+      , tbody [] (List.indexedMap (rowAttack c) (attacks.get c))
       ]
     ]
   ]
 
-rowAttack : Character -> (Lens Character (List Attack)) -> Int -> Attack -> Html Msg
-rowAttack c l n _ =
+rowAttack : Character -> Int -> Attack -> Html Msg
+rowAttack c n _ =
   let
     ident = "attack" ++ String.fromInt n
-    clens = compose (fromLens l) (list n)
+    clens = compose (fromLens attacks) (list n)
   in
     tr []
     [ td [] [ linkedInputOpt (ident ++ "name"  ) "" Nothing c (composeLens clens attackname  ) ]
