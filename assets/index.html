@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="assets/css/mystyle.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/printstyle.css" type="text/css" media="print">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&amp;display=swap" rel="stylesheet">
+    <script type="text/javascript" src="assets/js/elm.js"></script>
+    <link rel="icon" href="assets/images/cyre-favicon.png">
+    <title>Character Sheet</title>
+  </head>
+
+  <body>
+    <div id="elm-app-is-loaded-here"></div>
+    
+    <script>
+      var app = Elm.Main.init({
+        node: document.getElementById("elm-app-is-loaded-here")
+      });
+      app.ports.save.subscribe(function(keyValue) {
+        console.log("Saving stuff");
+        const obj = JSON.parse(keyValue);
+        localStorage.setItem("character_" + obj.key, obj.value);
+        jsDoList();
+      });
+      app.ports.doload.subscribe(function(key) {
+        console.log("Loading stuff");
+        const value = localStorage.getItem("character_" + key);
+        console.log(value);
+        app.ports.load.send(value);
+      });
+      function jsDoList() {
+        console.log("Listing items");
+        var items = [];
+        const len = localStorage.length;
+        for (var i=0; i<len; i++) {
+          const key = localStorage.key(i);
+          if (key.startsWith("character_")) {
+            items.push(key.slice(10));
+          }
+        }
+        console.log(items);
+        app.ports.listChars.send(JSON.stringify(items));
+      }
+      app.ports.dolist.subscribe(jsDoList);
+      app.ports.updatetitle.subscribe(function(value) {
+        document.title = value;
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1701 @@
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  
+  /**
+  * Remove default margin.
+  */
+  
+  body {
+    margin: 0;
+  }
+  
+  /* HTML5 display definitions
+   ========================================================================== */
+  
+  /**
+  * Correct `block` display not defined for any HTML5 element in IE 8/9.
+  * Correct `block` display not defined for `details` or `summary` in IE 10/11
+  * and Firefox.
+  * Correct `block` display not defined for `main` in IE 11.
+  */
+  
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+  
+  /**
+  * 1. Correct `inline-block` display not defined in IE 8/9.
+  * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+  */
+  
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block; /* 1 */
+    vertical-align: baseline; /* 2 */
+  }
+  
+  /**
+  * Prevent modern browsers from displaying `audio` without controls.
+  * Remove excess height in iOS 5 devices.
+  */
+  
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  
+  /**
+  * Address `[hidden]` styling not present in IE 8/9/10.
+  * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+  */
+  
+  [hidden],
+  template {
+    display: none;
+  }
+  
+  /* Links
+   ========================================================================== */
+  
+  /**
+  * Remove the gray background color from active links in IE 10.
+  */
+  
+  a {
+    background-color: transparent;
+  }
+  
+  /**
+  * Improve readability when focused and also mouse hovered in all browsers.
+  */
+  
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  
+  /* Text-level semantics
+   ========================================================================== */
+  
+  /**
+  * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+  */
+  
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+  
+  /**
+  * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+  */
+  
+  b,
+  strong {
+    font-weight: bold;
+  }
+  
+  /**
+  * Address styling not present in Safari and Chrome.
+  */
+  
+  dfn {
+    font-style: italic;
+  }
+  
+  /**
+  * Address variable `h1` font-size and margin within `section` and `article`
+  * contexts in Firefox 4+, Safari, and Chrome.
+  */
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  /**
+  * Address styling not present in IE 8/9.
+  */
+  
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+  
+  /**
+  * Address inconsistent and variable font size in all browsers.
+  */
+  
+  small {
+    font-size: 80%;
+  }
+  
+  /**
+  * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+  */
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  /* Embedded content
+   ========================================================================== */
+  
+  /**
+  * Remove border when inside `a` element in IE 8/9/10.
+  */
+  
+  img {
+    border: 0;
+  }
+  
+  /**
+  * Correct overflow not hidden in IE 9/10/11.
+  */
+  
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  
+  /* Grouping content
+   ========================================================================== */
+  
+  /**
+  * Address margin not present in IE 8/9 and Safari.
+  */
+  
+  figure {
+    margin: 1em 40px;
+  }
+  
+  /**
+  * Address differences between Firefox and other browsers.
+  */
+  
+  hr {
+    box-sizing: content-box;
+    height: 0;
+  }
+  
+  /**
+  * Contain overflow in all browsers.
+  */
+  
+  pre {
+    overflow: auto;
+  }
+  
+  /**
+  * Address odd `em`-unit font size rendering in all browsers.
+  */
+  
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+  
+  /* Forms
+   ========================================================================== */
+  
+  /**
+  * Known limitation: by default, Chrome and Safari on OS X allow very limited
+  * styling of `select`, unless a `border` property is set.
+  */
+  
+  /**
+  * 1. Correct color not being inherited.
+  *    Known issue: affects color of disabled elements.
+  * 2. Correct font properties not being inherited.
+  * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+  */
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: inherit; /* 1 */
+    font: inherit; /* 2 */
+    margin: 0; /* 3 */
+  }
+  
+  /**
+  * Address `overflow` set to `hidden` in IE 8/9/10/11.
+  */
+  
+  button {
+    overflow: visible;
+  }
+  
+  /**
+  * Address inconsistent `text-transform` inheritance for `button` and `select`.
+  * All other form control elements do not inherit `text-transform` values.
+  * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+  * Correct `select` style inheritance in Firefox.
+  */
+  
+  button,
+  select {
+    text-transform: none;
+  }
+  
+  /**
+  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+  *    and `video` controls.
+  * 2. Correct inability to style clickable `input` types in iOS.
+  * 3. Improve usability and consistency of cursor style between image-type
+  *    `input` and others.
+  */
+  
+  button,
+  html input[type="button"], /* 1 */
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+  }
+  
+  /**
+  * Re-set default cursor for disabled elements.
+  */
+  
+  button[disabled],
+  html input[disabled] {
+    cursor: default;
+  }
+  
+  /**
+  * Remove inner padding and border in Firefox 4+.
+  */
+  
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /**
+  * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+  * the UA stylesheet.
+  */
+  
+  input {
+    line-height: normal;
+  }
+  
+  /**
+  * It's recommended that you don't attempt to style these elements.
+  * Firefox's implementation doesn't respect box-sizing, padding, or width.
+  *
+  * 1. Address box sizing set to `content-box` in IE 8/9/10.
+  * 2. Remove excess padding in IE 8/9/10.
+  */
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+  * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+  * `font-size` values of the `input`, it causes the cursor style of the
+  * decrement button to change from `default` to `text`.
+  */
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /**
+  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+  * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+  *    (include `-moz` to future-proof).
+  */
+  
+  input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */ /* 2 */
+    box-sizing: content-box;
+  }
+  
+  /**
+  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+  * Safari (but not Chrome) clips the cancel button when the search input has
+  * padding (and `textfield` appearance).
+  */
+  
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /**
+  * Define consistent border, margin, and padding.
+  */
+  
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+  }
+  
+  /**
+  * 1. Correct `color` not being inherited in IE 8/9/10/11.
+  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+  */
+  
+  legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+  * Remove default vertical scrollbar in IE 8/9/10/11.
+  */
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  /**
+  * Don't inherit the `font-weight` (applied by a rule above).
+  * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+  */
+  
+  optgroup {
+    font-weight: bold;
+  }
+  
+  /* Tables
+   ========================================================================== */
+  
+  /**
+  * Remove most spacing between table cells.
+  */
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  td,
+  th {
+    padding: 0;
+  }
+  
+  /*! rouge-github.css */
+  
+  .highlight table td {
+    padding: 5px;
+  }
+  .highlight table pre {
+    margin: 0;
+  }
+  .highlight .cm {
+    color: #999988;
+    font-style: italic;
+  }
+  .highlight .cp {
+    color: #999999;
+    font-weight: bold;
+  }
+  .highlight .c1 {
+    color: #999988;
+    font-style: italic;
+  }
+  .highlight .cs {
+    color: #999999;
+    font-weight: bold;
+    font-style: italic;
+  }
+  .highlight .c,
+  .highlight .cd {
+    color: #999988;
+    font-style: italic;
+  }
+  .highlight .err {
+    color: #a61717;
+    background-color: #e3d2d2;
+  }
+  .highlight .gd {
+    color: #000000;
+    background-color: #ffdddd;
+  }
+  .highlight .ge {
+    color: #000000;
+    font-style: italic;
+  }
+  .highlight .gr {
+    color: #aa0000;
+  }
+  .highlight .gh {
+    color: #999999;
+  }
+  .highlight .gi {
+    color: #000000;
+    background-color: #ddffdd;
+  }
+  .highlight .go {
+    color: #888888;
+  }
+  .highlight .gp {
+    color: #555555;
+  }
+  .highlight .gs {
+    font-weight: bold;
+  }
+  .highlight .gu {
+    color: #aaaaaa;
+  }
+  .highlight .gt {
+    color: #aa0000;
+  }
+  .highlight .kc {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .kd {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .kn {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .kp {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .kr {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .kt {
+    color: #445588;
+    font-weight: bold;
+  }
+  .highlight .k,
+  .highlight .kv {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .mf {
+    color: #009999;
+  }
+  .highlight .mh {
+    color: #009999;
+  }
+  .highlight .il {
+    color: #009999;
+  }
+  .highlight .mi {
+    color: #009999;
+  }
+  .highlight .mo {
+    color: #009999;
+  }
+  .highlight .m,
+  .highlight .mb,
+  .highlight .mx {
+    color: #009999;
+  }
+  .highlight .sb {
+    color: #d14;
+  }
+  .highlight .sc {
+    color: #d14;
+  }
+  .highlight .sd {
+    color: #d14;
+  }
+  .highlight .s2 {
+    color: #d14;
+  }
+  .highlight .se {
+    color: #d14;
+  }
+  .highlight .sh {
+    color: #d14;
+  }
+  .highlight .si {
+    color: #d14;
+  }
+  .highlight .sx {
+    color: #d14;
+  }
+  .highlight .sr {
+    color: #009926;
+  }
+  .highlight .s1 {
+    color: #d14;
+  }
+  .highlight .ss {
+    color: #990073;
+  }
+  .highlight .s {
+    color: #d14;
+  }
+  .highlight .na {
+    color: #008080;
+  }
+  .highlight .bp {
+    color: #999999;
+  }
+  .highlight .nb {
+    color: #0086b3;
+  }
+  .highlight .nc {
+    color: #445588;
+    font-weight: bold;
+  }
+  .highlight .no {
+    color: #008080;
+  }
+  .highlight .nd {
+    color: #3c5d5d;
+    font-weight: bold;
+  }
+  .highlight .ni {
+    color: #800080;
+  }
+  .highlight .ne {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nf {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nl {
+    color: #990000;
+    font-weight: bold;
+  }
+  .highlight .nn {
+    color: #555555;
+  }
+  .highlight .nt {
+    color: #000080;
+  }
+  .highlight .vc {
+    color: #008080;
+  }
+  .highlight .vg {
+    color: #008080;
+  }
+  .highlight .vi {
+    color: #008080;
+  }
+  .highlight .nv {
+    color: #008080;
+  }
+  .highlight .ow {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .o {
+    color: #000000;
+    font-weight: bold;
+  }
+  .highlight .w {
+    color: #bbbbbb;
+  }
+  .highlight {
+    background-color: #f8f8f8;
+  }
+  
+  /* LAYOUT STYLES */
+  body {
+    font-family: Nunito, "Helvetica Neue", Helvetica, Arial, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #666;
+    background: #fafafa url(../images/body-bg.jpg) 0 0 repeat;
+  }
+  
+  p {
+    margin-top: 0;
+  }
+  
+  a {
+    color: #2879d0;
+  }
+  a:hover {
+    color: #2268b2;
+  }
+  
+  header {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    background: #2e7bcf url(../images/header-bg.jpg) 0 0 repeat-x;
+    border-bottom: solid 1px #275da1;
+  }
+  
+  header h1 {
+    width: 540px;
+    margin-top: 0;
+    margin-bottom: 0.2em;
+    font-size: 72px;
+    font-weight: normal;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -1px;
+  }
+  
+  header h2 {
+    width: 540px;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: #9ddcff;
+    letter-spacing: 0;
+  }
+  
+  .inner {
+    position: relative;
+    width: 940px;
+    margin: 0 auto;
+  }
+  
+  #content-wrapper {
+    padding-top: 30px;
+    border-top: solid 1px #fff;
+  }
+  
+  #main-content {
+    float: left;
+    width: 690px;
+  }
+  
+  #main-content img {
+    max-width: 100%;
+  }
+  
+  aside#sidebar {
+    float: right;
+    width: 200px;
+    min-height: 504px;
+    padding-left: 20px;
+    font-size: 12px;
+    line-height: 1.3;
+    background: transparent url(../images/sidebar-bg.jpg) 0 0 no-repeat;
+  }
+  
+  aside#sidebar p.repo-owner,
+  aside#sidebar p.repo-owner a {
+    font-weight: bold;
+  }
+  
+  #downloads {
+    margin-bottom: 40px;
+  }
+  
+  a.button {
+    width: 134px;
+    height: 58px;
+    padding-top: 22px;
+    padding-left: 68px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 23px;
+    line-height: 1.2;
+    color: #fff;
+  }
+  a.button small {
+    display: block;
+    font-size: 11px;
+  }
+  header a.button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent url(../images/github-button.png) 0 0 no-repeat;
+  }
+  aside a.button {
+    display: block;
+    width: 138px;
+    padding-left: 64px;
+    margin-bottom: 20px;
+    font-size: 21px;
+    background: transparent url(../images/download-button.png) 0 0 no-repeat;
+  }
+  
+  code,
+  pre {
+    margin-bottom: 30px;
+    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal,
+        monospace;
+    font-size: 13px;
+    color: #222;
+  }
+  
+  code {
+    padding: 0 3px;
+    background-color: #f2f8fc;
+    border: solid 1px #dbe7f3;
+  }
+  
+  pre {
+    padding: 20px;
+    overflow: auto;
+    text-shadow: none;
+    background: #fff;
+    border: solid 1px #f2f2f2;
+  }
+  pre code {
+    padding: 0;
+    color: #2879d0;
+    background-color: #fff;
+    border: none;
+  }
+  
+  ul,
+  ol,
+  dl {
+    margin-bottom: 20px;
+  }
+  
+  /* COMMON STYLES */
+  
+  hr {
+    height: 0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 0;
+    border-top: solid 1px #ddd;
+  }
+  
+  table {
+    width: 100%;
+    border: 1px solid #ebebeb;
+  }
+  
+  th {
+    font-weight: 500;
+  }
+  
+  td {
+    font-weight: 300;
+    text-align: center;
+    border: 1px solid #ebebeb;
+  }
+  
+  form {
+    padding: 20px;
+    background: #f2f2f2;
+  }
+  
+  /* GENERAL ELEMENT TYPE STYLES */
+  
+  #main-content h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 2.8em;
+    font-weight: normal;
+    color: #474747;
+    text-indent: 6px;
+    letter-spacing: -1px;
+  }
+  
+  #main-content h1:before {
+    padding-right: 0.3em;
+    margin-left: -0.9em;
+    color: #9ddcff;
+    content: "/";
+  }
+  
+  #main-content h2 {
+    margin-bottom: 8px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #474747;
+    text-indent: 4px;
+  }
+  #main-content h2:before {
+    padding-right: 0.3em;
+    margin-left: -1.5em;
+    content: "//";
+    color: #9ddcff;
+  }
+  
+  #main-content h3 {
+    margin-top: 24px;
+    margin-bottom: 8px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #474747;
+    text-indent: 3px;
+  }
+  
+  #main-content h3:before {
+    padding-right: 0.3em;
+    margin-left: -2em;
+    content: "///";
+    color: #9ddcff;
+  }
+  
+  #main-content h4 {
+    margin-bottom: 8px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #474747;
+    text-indent: 3px;
+  }
+  
+  h4:before {
+    padding-right: 0.3em;
+    margin-left: -2.8em;
+    content: "////";
+    color: #9ddcff;
+  }
+  
+  #main-content h5 {
+    margin-bottom: 8px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 14px;
+    color: #474747;
+    text-indent: 3px;
+  }
+  h5:before {
+    padding-right: 0.3em;
+    margin-left: -3.2em;
+    content: "/////";
+    color: #9ddcff;
+  }
+  
+  #main-content h6 {
+    margin-bottom: 8px;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial,
+        serif;
+    font-size: 0.8em;
+    color: #474747;
+    text-indent: 3px;
+  }
+  h6:before {
+    padding-right: 0.3em;
+    margin-left: -3.7em;
+    content: "//////";
+    color: #9ddcff;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  p a {
+    font-weight: 400;
+  }
+  
+  blockquote {
+    padding: 0 0 0 30px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border-left: 10px solid #e9e9e9;
+  }
+  
+  ul {
+    list-style-position: inside;
+    list-style: disc;
+    padding-left: 20px;
+  }
+  
+  ol {
+    list-style-position: inside;
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  
+  dl dd {
+    font-style: italic;
+    font-weight: 100;
+  }
+  
+  footer {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-top: 40px;
+    font-size: 13px;
+    color: #aaa;
+  }
+  
+  footer a {
+    color: #666;
+  }
+  footer a:hover {
+    color: #444;
+  }
+  
+  /* MISC */
+  .clearfix:after {
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    content: ".";
+  }
+  
+  .clearfix {
+    display: inline-block;
+  }
+  * html .clearfix {
+    height: 1%;
+  }
+  .clearfix {
+    display: block;
+  }
+  
+  /* Character sheet CSS */
+  .red {
+      background: red;
+    }
+    
+    .blue {
+      background: blue;
+    }
+    
+    .hide {
+      display: none !important;
+    }
+  
+  .centertd {
+    text-align: center;
+  }
+    
+  textarea {
+    font-size: 12px;
+    text-align: left;
+    width: calc(100% - 20px - 2px);
+    border-radius: 10px;
+    padding: 10px;
+    resize: none;
+    overflow: hidden;
+    height: 15em;
+  }
+  
+  textarea.equipment {
+    height: 22em;
+  }
+    
+    input[type=checkbox] {
+      cursor: pointer;
+    }
+    
+    div.box {
+      margin-top: 10px;
+    }
+  
+    header.charform {
+      padding-top: 0px;
+      padding-bottom: 10px;
+      background: none;
+    }
+    
+    form.charsheet {
+      width: 800px;
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 10px;
+    }
+    form.charsheet div.textblock {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      align-items: center;
+    }
+    form.charsheet div.textblock label {
+      text-align: center;
+      border: 1px solid black;
+      border-top: 0;
+      font-size: 10px;
+      width: calc(100% - 20px - 2px);
+      border-radius: 0 0 10px 10px;
+      padding: 4px 0;
+      font-weight: bold;
+    }
+    form.charsheet div.textblock textarea {
+      border: 1px solid black;
+    }
+    form.charsheet ul {
+      margin: 0;
+      padding: 0;
+    }
+    form.charsheet ul li {
+      list-style-image: none;
+      display: block;
+    }
+    form.charsheet ::-moz-placeholder {
+      color: #bbb;
+    }
+    form.charsheet :-ms-input-placeholder {
+      color: #bbb;
+    }
+    form.charsheet ::placeholder {
+      color: #bbb;
+    }
+    form.charsheet label {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    form.charsheet header {
+      display: flex;
+      align-contents: stretch;
+      align-items: stretch;
+    }
+    form.charsheet header section.charname {
+      border: 1px solid black;
+      border-right: 0;
+      border-radius: 10px 0 0 10px;
+      padding: 5px 0;
+      background-color: #eee;
+      width: 30%;
+      display: flex;
+      flex-direction: column-reverse;
+      bottom: 0;
+      top: 0;
+      margin: auto;
+    }
+    form.charsheet header section.charname input {
+      padding: 0.5em;
+      margin: 5px;
+      border: 0;
+    }
+    form.charsheet header section.charname label {
+      padding-left: 1em;
+    }
+    form.charsheet header section.misc {
+      width: 70%;
+      border: 1px solid black;
+      border-radius: 10px;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+    form.charsheet header section.misc ul {
+      padding: 10px 0px 5px 0px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    form.charsheet header section.misc ul li {
+      width: 33.33333%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    form.charsheet header section.misc ul li label {
+      margin-bottom: 5px;
+    }
+    form.charsheet header section.misc ul li input {
+      border: 0;
+      border-bottom: 1px solid #ddd;
+    }
+    form.charsheet main {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    form.charsheet main div.label-container {
+      position: relative;
+      width: 100%;
+      height: 18px;
+      margin-top: 6px;
+      border: 1px solid black;
+      border-left: 0;
+      text-align: center;
+    }
+    form.charsheet main div.label-container > label {
+      position: absolute;
+      left: 0;
+      top: 1px;
+      transform: translate(0%, 50%);
+      width: 100%;
+      font-size: 8px;
+    }
+    form.charsheet main > section {
+      width: 32%;
+      display: flex;
+      flex-direction: column;
+    }
+    form.charsheet main > section section.attributes {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    form.charsheet main > section section.attributes div.scores {
+      width: 101px;
+      background-color: #bbb;
+      border-radius: 10px;
+      padding-bottom: 5px;
+    }
+    form.charsheet main > section section.attributes div.scores label {
+      font-size: 8px;
+      font-weight: bold;
+    }
+    form.charsheet main > section section.attributes div.scores ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      height: 100%;
+    }
+    form.charsheet main > section section.attributes div.scores ul li {
+      height: 80px;
+      width: 70px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+    }
+    form.charsheet main > section section.attributes div.scores ul li input {
+      width: 100%;
+      padding: 0;
+      border: 0;
+    }
+    form.charsheet main > section section.attributes div.scores ul li div.score input {
+      text-align: center;
+      font-size: 40px;
+      padding: 0px 0px 0px 0px;
+      background: white;
+      border-radius: 10px;
+    }
+    form.charsheet main > section section.attributes div.scores ul li div.modifier {
+      margin-top: -5px;
+    }
+    form.charsheet main > section section.attributes div.scores ul li div.modifier input {
+      background: white;
+      width: 30px;
+      height: 20px;
+      border: 1px inset black;
+      border-radius: 20px;
+      margin: -1px;
+      text-align: center;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.inspiration {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.inspiration input {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      border: 1px solid black;
+      padding: 15px;
+      border-radius: 10px;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.proficiencybonus {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.proficiencybonus input {
+      width: 30px;
+      height: 28px;
+      border: 1px solid black;
+      text-align: center;
+      border-radius: 10px;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section {
+      border: 1px solid black;
+      border-radius: 10px;
+      padding: 10px 5px;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section div.label {
+      margin-top: 10px;
+      margin-bottom: 2.5px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: bold;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li {
+      display: flex;
+      align-items: center;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li > * {
+      margin-left: 5px;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li label {
+      text-transform: none;
+      font-size: 8px;
+      text-align: left;
+      order: 3;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li label span.skill {
+      color: #bbb;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type=text] {
+      width: 30px;
+      font-size: 12px;
+      text-align: center;
+      border: 0;
+      border-bottom: 1px solid black;
+      order: 2;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type=checkbox] {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+      order: 1;
+    }
+    form.charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type=checkbox]:checked {
+      background-color: black;
+    }
+    form.charsheet main > section div.passive-perception {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+    form.charsheet main > section div.passive-perception input {
+      width: 30px;
+      height: 28px;
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+    form.charsheet main > section div.otherprofs textarea {
+      height: 18em;
+    }
+    form.charsheet main section.combat {
+      background-color: #eee;
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 10px;
+    }
+    form.charsheet main section.combat > div {
+      overflow: hidden;
+    }
+    form.charsheet main section.combat > div.armorclass, form.charsheet main section.combat > div.initiative, form.charsheet main section.combat > div.speed {
+      flex-basis: 33.333%;
+    }
+    form.charsheet main section.combat > div.armorclass > div, form.charsheet main section.combat > div.initiative > div, form.charsheet main section.combat > div.speed > div {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      margin-top: 10px;
+    }
+    form.charsheet main section.combat > div.armorclass > div label, form.charsheet main section.combat > div.initiative > div label, form.charsheet main section.combat > div.speed > div label {
+      font-size: 8px;
+      width: 50px;
+      border: 1px solid black;
+      border-top: 0;
+      background-color: white;
+      text-align: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      border-radius: 0 0 10px 10px;
+    }
+    form.charsheet main section.combat > div.armorclass > div input, form.charsheet main section.combat > div.initiative > div input, form.charsheet main section.combat > div.speed > div input {
+      height: 70px;
+      width: 70px;
+      border-radius: 10px;
+      border: 1px solid black;
+      text-align: center;
+      font-size: 30px;
+    }
+    form.charsheet main section.combat > div.hp {
+      flex-basis: 100%;
+    }
+    form.charsheet main section.combat > div.hp > div.regular {
+      background-color: white;
+      border: 1px solid black;
+      margin: 10px;
+      margin-bottom: 5px;
+      border-radius: 10px 10px 0 0;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.max {
+      display: flex;
+      justify-content: space-around;
+      align-items: baseline;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.max label {
+      font-size: 10px;
+      text-transform: none;
+      color: #bbb;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.max input {
+      width: 40%;
+      border: 0;
+      border-bottom: 1px solid #ddd;
+      font-size: 12px;
+      text-align: center;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.current {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.current input {
+      border: 0;
+      width: 100%;
+      padding: 1em 0;
+      font-size: 20px;
+      text-align: center;
+    }
+    form.charsheet main section.combat > div.hp > div.regular > div.current label {
+      font-size: 10px;
+      padding-bottom: 5px;
+      text-align: center;
+      font-weight: bold;
+    }
+    form.charsheet main section.combat > div.hp > div.temporary {
+      margin: 10px;
+      margin-top: 0;
+      border: 1px solid black;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      flex-direction: column-reverse;
+      background-color: white;
+    }
+    form.charsheet main section.combat > div.hp > div.temporary input {
+      padding: 1em 0;
+      font-size: 20px;
+      border: 0;
+      text-align: center;
+    }
+    form.charsheet main section.combat > div.hp > div.temporary label {
+      font-size: 10px;
+      padding-bottom: 5px;
+      text-align: center;
+      font-weight: bold;
+    }
+    form.charsheet main section.combat > div.hitdice, form.charsheet main section.combat > div.deathsaves {
+      flex: 1 50%;
+      height: 100px;
+    }
+    form.charsheet main section.combat > div.hitdice > div, form.charsheet main section.combat > div.deathsaves > div {
+      height: 80px;
+    }
+    form.charsheet main section.combat > div.hitdice > div {
+      background-color: white;
+      margin: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.total {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-around;
+      padding: 5px 0;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.total label {
+      font-size: 10px;
+      color: #bbb;
+      margin: 0.25em;
+      text-transform: none;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.total input {
+      font-size: 12px;
+      flex-grow: 1;
+      border: 0;
+      border-bottom: 1px solid #ddd;
+      width: 50%;
+      margin-right: 0.25em;
+      padding: 0 0.25em;
+      text-align: center;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.remaining {
+      flex: 1;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.remaining label {
+      text-align: center;
+      padding: 2px;
+      font-size: 10px;
+    }
+    form.charsheet main section.combat > div.hitdice > div > div.remaining input {
+      text-align: center;
+      border: 0;
+      flex: 1;
+    }
+    form.charsheet main section.combat > div.deathsaves > div {
+      margin: 10px;
+      background: white;
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    form.charsheet main section.combat > div.deathsaves > div > div.label {
+      text-align: center;
+    }
+    form.charsheet main section.combat > div.deathsaves > div > div.label label {
+      font-size: 10px;
+    }
+    form.charsheet main section.combat > div.deathsaves > div > div.marks {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: center;
+    }
+    form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses, form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails {
+      display: flex;
+      align-items: center;
+    }
+    form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathsuccesses label, form.charsheet main section.combat > div.deathsaves > div > div.marks div.deathfails label {
+      font-size: 8px;
+      text-align: right;
+      flex: 1 50%;
+    }
+    form.charsheet main section.combat > div.deathsaves > div div.bubbles {
+      flex: 1 40%;
+      margin-left: 5px;
+    }
+    form.charsheet main section.combat > div.deathsaves > div div.bubbles input[type=checkbox] {
+      -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+    form.charsheet main section.combat > div.deathsaves > div div.bubbles input[type=checkbox]:checked {
+      background-color: black;
+    }
+    form.charsheet main section.attacksandspellcasting {
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    form.charsheet main section.attacksandspellcasting > div {
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    form.charsheet main section.attacksandspellcasting > div > label {
+      order: 3;
+      text-align: center;
+    }
+    form.charsheet main section.attacksandspellcasting > div > table {
+      width: 100%;
+    }
+    form.charsheet main section.attacksandspellcasting > div > table th {
+      font-size: 10px;
+      color: #ddd;
+    }
+    form.charsheet main section.attacksandspellcasting > div > table input {
+      width: calc(100% - 4px);
+      border: 0;
+      background-color: #eee;
+      font-size: 10px;
+      padding: 3px;
+    }
+    form.charsheet main section.attacksandspellcasting > div textarea {
+      border: 0;
+    }
+    form.charsheet main section.equipment {
+      border: 1px solid black;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+    form.charsheet main section.equipment > div {
+      padding: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    form.charsheet main section.equipment > div > div.money ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
+    }
+    form.charsheet main section.equipment > div > div.money ul > li {
+      display: flex;
+      align-items: center;
+    }
+    form.charsheet main section.equipment > div > div.money ul > li label {
+      border: 1px solid black;
+      border-radius: 10px 10px 0 0;
+      border-bottom: 0;
+      height: 50px;
+      font-size: 8px;
+      text-align: center;
+      padding: 6px;
+      margin-left: 10px;
+      margin-top: 0;
+      flex-direction: column;
+    }
+    form.charsheet main section.equipment > div > div.money ul > li input {
+      border: 1px solid black;
+      border-radius: 10px;
+      width: 38px;
+      padding: 10px 3px;
+      font-size: 12px;
+      text-align: center;
+    }
+    form.charsheet main section.equipment > div > label {
+      order: 3;
+      text-align: center;
+      flex: 100%;
+    }
+    form.charsheet main section.equipment > div > textarea {
+      flex: 1;
+      border: 0;
+    }
+    form.charsheet main section.flavor {
+      padding: 10px;
+      background: #bbb;
+      border-radius: 10px;
+    }
+    form.charsheet main section.flavor div {
+      background: white;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 5px;
+      border: 1px solid black;
+    }
+    form.charsheet main section.flavor div label {
+      text-align: center;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+    form.charsheet main section.flavor div textarea {
+      border: 0;
+      border-radius: 0;
+      height: 4em;
+    }
+    form.charsheet main section.flavor div:first-child {
+      border-radius: 10px 10px 0 0;
+    }
+    form.charsheet main section.flavor div:not(:first-child) {
+      margin-top: 10px;
+    }
+    form.charsheet main section.flavor div:last-child {
+      border-radius: 0 0 10px 10px;
+    }
+    form.charsheet main section.features {
+      padding-top: 10px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+    }
+    form.charsheet main section.features div {
+      padding-top: 10px;
+      padding-left: 10px;
+      padding-bottom: 5px;
+      padding-right: 0px;
+      border: 1px solid black;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    form.charsheet main section.features div label {
+      text-align: center;
+    }
+    form.charsheet main section.features div textarea {
+      border: 0;
+      padding: 5px;
+      height: 44em;
+    }
+  
+    /* Tab stuff */
+    /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  .loadpanel {
+    vertical-align: top;
+    width: 160px;
+  }
+
+  .loadbutton {
+    width: 150px;
+  }
+
+  .input-center {
+    text-align: center;
+  }
+
+  .spacer-row {
+    height: 10px;
+  }
