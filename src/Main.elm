@@ -1,11 +1,14 @@
 module Main exposing (..)
 
 import Browser
+import File
 import File.Download as Save
+import File.Select as Select
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Json.Encode as Encode
+import Task
 
 import Model.Character exposing (..)
 import Model.Messages exposing (..)
@@ -46,6 +49,8 @@ update msg model =
     DoList              -> ( model, dolist ())
     List value          -> ( { model | characterNames = decodeCharacterNames value}, Cmd.none )
     SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterEncoder model.character) )
+    DoLoadFile          -> ( model, Select.file ["text/json"] FileSelected )
+    FileSelected file   -> ( model, Task.perform Load (File.toString file))
 
 -- VIEW
 view : Model -> Html Msg
@@ -57,8 +62,9 @@ view model =
           [ table [] 
             ( List.append ( List.map loadButton model.characterNames )
               [ tr [ class "spacer-row " ] [ td [] [] ]
-              , tr [] [ td [] [ button [ onClick DoSave,   class "loadbutton" ] [ text "Save" ] ] ]
-              , tr [] [ td [] [ button [ onClick SaveData, class "loadbutton" ] [ text "Save To File" ] ] ]
+              , tr [] [ td [] [ button [ onClick DoSave,     class "loadbutton" ] [ text "Save" ] ] ]
+              , tr [] [ td [] [ button [ onClick SaveData,   class "loadbutton" ] [ text "Save To File" ] ] ]
+              , tr [] [ td [] [ button [ onClick DoLoadFile, class "loadbutton" ] [ text "Load from File" ] ] ]
               ]
             )
           ]

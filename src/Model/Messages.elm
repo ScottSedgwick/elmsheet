@@ -1,5 +1,6 @@
 module Model.Messages exposing (..)
 
+import File exposing (File)
 import Monocle.Lens exposing (Lens)
 import Monocle.Optional exposing (Optional)
 import Model.Character exposing (Character)
@@ -35,3 +36,5 @@ type Msg
   | DoList
   | List String
   | SaveData
+  | DoLoadFile
+  | FileSelected File
