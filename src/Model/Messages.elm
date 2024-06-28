@@ -8,9 +8,11 @@ type TabName
   = Stats
   | Features
   | Backpack
+  | PortableHole
+  | Spellcasting
 
 allTabs : List TabName
-allTabs = [Stats, Features, Backpack]
+allTabs = [Stats, Features, Backpack, PortableHole, Spellcasting]
 
 tabName : TabName -> String
 tabName x = 
@@ -18,6 +20,8 @@ tabName x =
     Stats -> "Stats"
     Features -> "Features"
     Backpack -> "Backpack"
+    PortableHole -> "Portable Hole"
+    Spellcasting -> "Spellcasting"
 
 type Msg
   = ChangeTab TabName
@@ -30,3 +34,4 @@ type Msg
   | Load String
   | DoList
   | List String
+  | SaveData

@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Browser
+import File.Download as Save
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
@@ -11,6 +12,8 @@ import Model.Messages exposing (..)
 import Ports.Ports exposing (..)
 import View.Backpack exposing (..)
 import View.Features exposing (..)
+import View.PortableHole exposing (..)
+import View.Spellcasting exposing (..)
 import View.Stats exposing (..)
 import Utils.ViewUtils exposing (..)
 
@@ -42,6 +45,7 @@ update msg model =
     Load value          -> ( { model | character = decode value }, Cmd.none )
     DoList              -> ( model, dolist ())
     List value          -> ( { model | characterNames = decodeCharacterNames value}, Cmd.none )
+    SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterEncoder model.character) )
 
 -- VIEW
 view : Model -> Html Msg
@@ -53,8 +57,8 @@ view model =
           [ table [] 
             ( List.append ( List.map loadButton model.characterNames )
               [ tr [ class "spacer-row " ] [ td [] [] ]
-              , tr [] [ td [] [ button [ onClick DoList, class "loadbutton" ] [ text "Refresh List" ] ] ]
-              , tr [] [ td [] [ button [ onClick DoSave, class "loadbutton" ] [ text "Save" ] ] ]
+              , tr [] [ td [] [ button [ onClick DoSave,   class "loadbutton" ] [ text "Save" ] ] ]
+              , tr [] [ td [] [ button [ onClick SaveData, class "loadbutton" ] [ text "Save To File" ] ] ]
               ]
             )
           ]
@@ -87,6 +91,8 @@ tabBody c a n =
         Stats -> [viewStats c]
         Features -> viewFeatures c
         Backpack -> viewBackpack c
+        PortableHole -> viewPortableHole c
+        Spellcasting -> viewSpellcasting c
   in
     div attrs tabView
 
