@@ -104,6 +104,14 @@ type alias Character =
   , deathsavefail2_ : Bool
   , deathsavefail3_ : Bool
   , inspiration_ : Bool
+  , spellclass_ : String
+  , spellability_ : String
+  , spellsavedc_ : String
+  , spellattackb_ : String
+  , preparespells_ : String
+  , potionsgems_ : String
+  , phitems1_ : String
+  , phitems2_ : String
   }
 
 characterEncoder : Character -> String
@@ -206,6 +214,14 @@ characterEncoder c = Encode.encode 0
     , ("deathsavefail2", Encode.bool c.deathsavefail2_)
     , ("deathsavefail3", Encode.bool c.deathsavefail3_)
     , ("inspiration", Encode.bool c.inspiration_)
+    , ("spellclass", Encode.string c.spellclass_)
+    , ("spellability", Encode.string c.spellability_)
+    , ("spellsavedc", Encode.string c.spellsavedc_)
+    , ("spellattackb", Encode.string c.spellattackb_)
+    , ("preparespells", Encode.string c.preparespells_)
+    , ("potionsgems", Encode.string c.potionsgems_)
+    , ("phitems1", Encode.string c.phitems1_)
+    , ("phitems2", Encode.string c.phitems2_)
     ]
   )
 
@@ -309,6 +325,14 @@ characterDecoder =
     |> optional "deathsavefail2" Decode.bool False
     |> optional "deathsavefail3" Decode.bool False
     |> optional "inspiration" Decode.bool False
+    |> optional "spellclass" Decode.string ""
+    |> optional "spellability" Decode.string ""
+    |> optional "spellsavedc" Decode.string ""
+    |> optional "spellattackb" Decode.string ""
+    |> optional "preparespells" Decode.string ""
+    |> optional "potionsgems" Decode.string ""
+    |> optional "phitems1" Decode.string ""
+    |> optional "phitems2" Decode.string ""
 
 type alias Attack =
   { name_ : String
@@ -448,6 +472,14 @@ initCharacter =
   , deathsavefail2_ = False
   , deathsavefail3_ = False
   , inspiration_ = False
+  , spellclass_ = ""
+  , spellability_ = ""
+  , spellsavedc_ = ""
+  , spellattackb_ = ""
+  , preparespells_ = ""
+  , potionsgems_ = ""
+  , phitems1_ = ""
+  , phitems2_ = ""
   }
 
 -- Character Lenses
@@ -742,3 +774,27 @@ deathsavefail3 = Lens .deathsavefail3_ (\b a -> { a | deathsavefail3_ = b } )
 
 inspiration : Lens Character Bool
 inspiration = Lens .inspiration_ (\b a -> { a | inspiration_ = b } )
+
+spellclass : Lens Character String
+spellclass = Lens .spellclass_ (\b a -> { a | spellclass_ = b } )
+
+spellability : Lens Character String
+spellability = Lens .spellability_ (\b a -> { a | spellability_ = b } )
+
+spellsavedc : Lens Character String
+spellsavedc = Lens .spellsavedc_ (\b a -> { a | spellsavedc_ = b } )
+
+spellattackb : Lens Character String
+spellattackb = Lens .spellattackb_ (\b a -> { a | spellattackb_ = b } )
+
+preparespells : Lens Character String
+preparespells = Lens .preparespells_ (\b a -> { a | preparespells_ = b } )
+
+potionsgems : Lens Character String
+potionsgems = Lens .potionsgems_ (\ b a -> { a | potionsgems_ = b } )
+
+phitems1 : Lens Character String
+phitems1 = Lens .phitems1_ (\ b a -> { a | phitems1_ = b } )
+
+phitems2 : Lens Character String
+phitems2 = Lens .phitems2_ (\ b a -> { a | phitems2_ = b } )
