@@ -7,6 +7,7 @@ import File.Select as Select
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Json.Decode as Decode
 import Json.Encode as Encode
 import Task
 
@@ -43,14 +44,22 @@ update msg model =
     UpdateOptStr lens v -> ( { model | character = lens.set v model.character }, Cmd.none )
     UpdateInt lens v    -> ( { model | character = lens.set (toInt v) model.character }, Cmd.none )
     UpdateBool lens v   -> ( { model | character = lens.set v model.character}, Cmd.none)
-    DoSave              -> ( model, save (Encode.encode 0 (Encode.object [("key", Encode.string (charname.get model.character)), ("value", Encode.string (characterEncoder model.character)) ] ) ) )
+    DoSave              -> ( model, save (Encode.encode 0 (Encode.object [("key", Encode.string (charname.get model.character)), ("value", Encode.string (characterStringEncoder model.character)) ] ) ) )
     DoLoad key          -> ( model, Cmd.batch [doload key, updatetitle key] )
-    Load value          -> ( { model | character = decode value }, Cmd.none )
+    Load value          -> ( model, decodeCharacter value )
+    LoadCharacter c     -> ( { model | character = c }, Cmd.none )
     DoList              -> ( model, dolist ())
     List value          -> ( { model | characterNames = decodeCharacterNames value}, Cmd.none )
-    SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterEncoder model.character) )
+    SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterStringEncoder model.character) )
     DoLoadFile          -> ( model, Select.file ["text/json"] FileSelected )
     FileSelected file   -> ( model, Task.perform Load (File.toString file))
+    ConsoleLog message  -> ( model, dolog message)
+
+decodeCharacter : String -> Cmd Msg --Character
+decodeCharacter s =
+  case Decode.decodeString characterDecoder s of
+    Ok value -> Task.perform LoadCharacter (Task.succeed value)
+    Err e -> Task.perform ConsoleLog (Task.succeed ((Decode.errorToString e) ++ "\n" ++ s))
 
 -- VIEW
 view : Model -> Html Msg

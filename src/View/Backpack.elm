@@ -27,7 +27,7 @@ viewBackpack c =
     , node "main" [] 
       [ section []
         ([ section []
-          [ label [] [ text "Exterior" ]
+          [ label [ for "bedroll" ] [ text "Exterior" ]
           , table []
             [ tableRow "bedroll" "Bed Roll" c bedroll
             , tableRow "rope"    "Rope"     c rope
@@ -35,7 +35,7 @@ viewBackpack c =
             , tableRow "torches" "Torches"  c torches
             ]
           ]
-        , label [ for "purse" ] [ text "Treasure Purse" ]  
+        , label [ for "copper" ] [ text "Treasure Purse" ]  
         , table []
           [ tableRow "copper"   "Copper"   c copper
           , tableRow "silver"   "Silver"   c silver
