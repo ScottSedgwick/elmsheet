@@ -1,0 +1,351 @@
+{
+    "$id": "http://example.com/definitions.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "Attack": {
+            "$id": "#attack",
+            "properties": {
+                "attackbonus": {
+                    "type": "string"
+                },
+                "attackdamage": {
+                    "type": "string"
+                },
+                "attackname": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "type": "object"
+        },
+        "Character": {
+            "$id": "#character",
+            "properties": {
+                "ac": {
+                    "type": "number"
+                },
+                "acrobatics": {
+                    "type": "boolean"
+                },
+                "age": {
+                    "type": "string"
+                },
+                "alignment": {
+                    "type": "string"
+                },
+                "ammo": {
+                    "type": "string"
+                },
+                "animalhandling": {
+                    "type": "boolean"
+                },
+                "arcana": {
+                    "type": "boolean"
+                },
+                "athletics": {
+                    "type": "boolean"
+                },
+                "attacks": {
+                    "items": {
+                        "type": "Attack"
+                    },
+                    "type": "array"
+                },
+                "background": {
+                    "type": "string"
+                },
+                "bedroll": {
+                    "type": "string"
+                },
+                "bonds": {
+                    "type": "string"
+                },
+                "charclass": {
+                    "type": "string"
+                },
+                "charisma": {
+                    "type": "number"
+                },
+                "charismaProficiency": {
+                    "type": "boolean"
+                },
+                "charname": {
+                    "type": "string"
+                },
+                "constitution": {
+                    "type": "number"
+                },
+                "constitutionProficiency": {
+                    "type": "boolean"
+                },
+                "copper": {
+                    "type": "string"
+                },
+                "cp": {
+                    "type": "number"
+                },
+                "currhp": {
+                    "type": "number"
+                },
+                "deathsavefail1": {
+                    "type": "boolean"
+                },
+                "deathsavefail2": {
+                    "type": "boolean"
+                },
+                "deathsavefail3": {
+                    "type": "boolean"
+                },
+                "deathsavesuccess1": {
+                    "type": "boolean"
+                },
+                "deathsavesuccess2": {
+                    "type": "boolean"
+                },
+                "deathsavesuccess3": {
+                    "type": "boolean"
+                },
+                "deception": {
+                    "type": "boolean"
+                },
+                "dexterity": {
+                    "type": "number"
+                },
+                "dexterityProficiency": {
+                    "type": "boolean"
+                },
+                "electrum": {
+                    "type": "string"
+                },
+                "ep": {
+                    "type": "number"
+                },
+                "equipment": {
+                    "type": "string"
+                },
+                "experiencepoints": {
+                    "type": "string"
+                },
+                "eyes": {
+                    "type": "string"
+                },
+                "faction": {
+                    "type": "string"
+                },
+                "features": {
+                    "type": "string"
+                },
+                "flappouch": {
+                    "type": "string"
+                },
+                "flaws": {
+                    "type": "string"
+                },
+                "fullbackground": {
+                    "type": "string"
+                },
+                "fullfeatures": {
+                    "type": "string"
+                },
+                "gold": {
+                    "type": "string"
+                },
+                "gp": {
+                    "type": "number"
+                },
+                "hair": {
+                    "type": "string"
+                },
+                "height": {
+                    "type": "string"
+                },
+                "history": {
+                    "type": "boolean"
+                },
+                "ideals": {
+                    "type": "string"
+                },
+                "imagesize": {
+                    "type": "string"
+                },
+                "imageurl": {
+                    "type": "string"
+                },
+                "initiative": {
+                    "type": "number"
+                },
+                "insight": {
+                    "type": "boolean"
+                },
+                "inspiration": {
+                    "type": "boolean"
+                },
+                "intelligence": {
+                    "type": "number"
+                },
+                "intelligenceProficiency": {
+                    "type": "boolean"
+                },
+                "intimidation": {
+                    "type": "boolean"
+                },
+                "investigation": {
+                    "type": "boolean"
+                },
+                "level": {
+                    "type": "number"
+                },
+                "mainpouch": {
+                    "type": "string"
+                },
+                "maxhp": {
+                    "type": "number"
+                },
+                "medicine": {
+                    "type": "boolean"
+                },
+                "middlepouch": {
+                    "type": "string"
+                },
+                "nature": {
+                    "type": "boolean"
+                },
+                "otherprofs": {
+                    "type": "string"
+                },
+                "passiveinsight": {
+                    "type": "number"
+                },
+                "passiveinvestigation": {
+                    "type": "number"
+                },
+                "passiveperception": {
+                    "type": "number"
+                },
+                "perception": {
+                    "type": "boolean"
+                },
+                "performance": {
+                    "type": "boolean"
+                },
+                "personality": {
+                    "type": "string"
+                },
+                "persuasion": {
+                    "type": "boolean"
+                },
+                "phitems1": {
+                    "type": "string"
+                },
+                "phitems2": {
+                    "type": "string"
+                },
+                "platinum": {
+                    "type": "string"
+                },
+                "player": {
+                    "type": "string"
+                },
+                "pocket1": {
+                    "type": "string"
+                },
+                "pocket2": {
+                    "type": "string"
+                },
+                "pocket3": {
+                    "type": "string"
+                },
+                "pocket4": {
+                    "type": "string"
+                },
+                "potionsgems": {
+                    "type": "string"
+                },
+                "pp": {
+                    "type": "number"
+                },
+                "preparespells": {
+                    "type": "string"
+                },
+                "race": {
+                    "type": "string"
+                },
+                "religion": {
+                    "type": "boolean"
+                },
+                "remaininghd": {
+                    "type": "number"
+                },
+                "rope": {
+                    "type": "string"
+                },
+                "silver": {
+                    "type": "string"
+                },
+                "skin": {
+                    "type": "string"
+                },
+                "sleightofhand": {
+                    "type": "boolean"
+                },
+                "sp": {
+                    "type": "number"
+                },
+                "speed": {
+                    "type": "number"
+                },
+                "spellability": {
+                    "type": "string"
+                },
+                "spellattackb": {
+                    "type": "string"
+                },
+                "spellclass": {
+                    "type": "string"
+                },
+                "spellsavedc": {
+                    "type": "string"
+                },
+                "stealth": {
+                    "type": "boolean"
+                },
+                "strength": {
+                    "type": "number"
+                },
+                "strengthProficiency": {
+                    "type": "boolean"
+                },
+                "survival": {
+                    "type": "boolean"
+                },
+                "temphp": {
+                    "type": "number"
+                },
+                "torches": {
+                    "type": "string"
+                },
+                "totalhd": {
+                    "type": "number"
+                },
+                "traits": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "string"
+                },
+                "wisdom": {
+                    "type": "number"
+                },
+                "wisdomProficiency": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "charname"
+            ],
+            "type": "object"
+        }
+    },
+    "description": "Schema for common types",
+    "title": "Definitions"
+}

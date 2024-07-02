@@ -1,12 +1,13 @@
 module View.Stats exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, for, name, placeholder, type_, value, width)
+import Html.Attributes exposing (class, for, id, name, placeholder, type_, value, width)
 import Html.Events exposing (..)
 import Monocle.Common exposing (list)
 import Monocle.Lens exposing (Lens)
 import Monocle.Optional exposing (fromLens, compose, composeLens)
 
+import Model.Attack exposing (..)
 import Model.Character exposing (..)
 import Model.Messages exposing (..)
 import Utils.ViewUtils exposing (..)
@@ -59,7 +60,7 @@ sectionAttributes c =
       ]
     , div [ class "proficiencybonus box" ]
       [ div [ class "label-container" ] [ label [ for "proficiencybonus" ] [ text "Proficiency Bonus" ] ]
-      , input [ name "proficiencybonus", value (String.fromInt (profBonus c)) ] []
+      , input [ id "proficiencybonus", name "proficiencybonus", value (String.fromInt (profBonus c)) ] []
       ]
     , div [ class "saves list-section box" ]
       [ ul []
@@ -106,7 +107,7 @@ sectionAttributes c =
 passiveBox : String -> String -> Character -> (Lens Character Int) -> Html Msg
 passiveBox ident caption char lens =
   div [ class "passive-perception box" ] 
-    [ div [ class "label-container"] [ label [] [ text caption] ]
+    [ div [ class "label-container"] [ label [ for ident ] [ text caption] ]
     , linkedInputInt ident caption Nothing char lens
     ]
 
@@ -132,10 +133,10 @@ sectionCombat c =
       ]
     , div [ class "deathsaves" ] 
       [ div []
-        [ div [ class "label" ] [ label [] [ text "Death Saves" ] ]
+        [ div [ class "label" ] [ label [ for "deathsavesuccess2" ] [ text "Death Saves" ] ]
         , div [ class "marks" ]
           [ div [ class "deathsuccesses" ] 
-            [ label [] [ text "Successes" ]
+            [ label [ for "deathsavesuccess1" ] [ text "Successes" ]
             , div [ class "bubbles" ] 
               [ linkedCheckbox "deathsavesuccess1" deathsavesuccess1 c
               , linkedCheckbox "deathsavesuccess2" deathsavesuccess2 c
@@ -143,7 +144,7 @@ sectionCombat c =
               ]
             ]
           , div [ class "deathfails" ] 
-            [ label [] [ text "Failures" ]
+            [ label [ for "deathsavefail1" ] [ text "Failures" ]
             , div [ class "bubbles" ] 
               [ linkedCheckbox "deathsavefail1" deathsavefail1 c
               , linkedCheckbox "deathsavefail2" deathsavefail2 c
@@ -160,7 +161,7 @@ sectionAttacks : Character -> Html Msg
 sectionAttacks c = 
   section [ class "attacksandspellcasting"] 
   [ div []
-    [ label [] [ text "Attacks & Spellcasting" ]
+    [ label [for "attack1name" ] [ text "Attacks & Spellcasting" ]
     , table []
       [ thead []
         [ tr []
@@ -190,7 +191,7 @@ sectionEquipment : Character -> Html Msg
 sectionEquipment c = 
   section [ class "equipment" ] 
   [ div []
-    [ label [] [ text "Equipment" ]
+    [ label [ for "equipment" ] [ text "Equipment" ]
     , div [ class "money" ]
       [ ul []
         [ li [] [ div [] (labelInputInt "cp" "CP" Nothing c cp) ]
@@ -221,10 +222,10 @@ scoreSection : String -> String -> Character -> (Lens Character Int) -> List (Ht
 scoreSection ident caption c lens =
   [ div [ class "score" ]
       [ label [ for ident ] [ text caption ]
-      , input [ name ident, placeholder caption, value (String.fromInt (lens.get c)), onInput (UpdateInt lens) ] []
+      , input [ id ident, name ident, placeholder caption, value (String.fromInt (lens.get c)), onInput (UpdateInt lens) ] []
       ]
   , div [ class "modifier" ]
-    [ input [ placeholder "0", value (String.fromInt (statBonus (lens.get c)))] []]
+    [ input [ id (ident ++ "modifier"), placeholder "0", value (String.fromInt (statBonus (lens.get c)))] []]
   ]
 
 statBonus : Int -> Int
@@ -234,7 +235,7 @@ statSaveItem : String -> (Lens Character Int) -> (Lens Character Bool) -> Charac
 statSaveItem ident statLens profLens c =
   li [] 
     [ label [ for (ident ++ "-save") ] [ text ident]
-    , input [ name (ident ++ "-save"), placeholder "0", type_ "text", value (String.fromInt (calcSave statLens profLens c))] []
+    , input [ id (ident ++ "-save"), name (ident ++ "-save"), placeholder "0", type_ "text", value (String.fromInt (calcSave statLens profLens c))] []
     , linkedCheckbox (ident ++ "-save-prof") profLens c
     ]
 
@@ -253,7 +254,7 @@ skillBox : String -> String -> (Lens Character Int) -> (Lens Character Bool) -> 
 skillBox caption stat statLens profLens c =
   li []
     [ label [ for caption ] [ text caption, span [ class "skill" ] [ text (" (" ++ stat ++ ")")] ]
-    , input [ name caption, value (String.fromInt (calcSkillBonus statLens profLens c)), type_ "text" ] []
+    , input [ id caption, name caption, value (String.fromInt (calcSkillBonus statLens profLens c)), type_ "text" ] []
     , linkedCheckbox (caption ++ "-prof") profLens c
     ]
 

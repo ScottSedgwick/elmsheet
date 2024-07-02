@@ -1,5 +1,8 @@
 require 'fileutils'
 require 'rake/clean'
+require_relative 'rakelib/json-schema-generator.rb'
+require 'json-schema'
+
 
 HTML_FILE   = 'output/index.html'
 CSS_FILES   = Dir['assets/css/*.css']
@@ -48,3 +51,20 @@ task :image_assets do
 end
 
 task :build => [:clean, JS_FILE, :css_assets, HTML_FILE, :image_assets]
+
+task :generate do
+    schema = Schema.new("data/schema.json", "Model")
+    schema.objects.each do |obj|
+        File.open("src/Model/#{obj.name}.elm", 'w') do |f|
+            obj.generate_file(f)
+        end
+    end
+end
+
+task :deploy => [:clean, :css_assets, HTML_FILE, :image_assets] do
+    FileUtils.mkdir_p('output')
+    FileUtils.mkdir_p('output/assets')
+    FileUtils.mkdir_p('output/assets/js')
+    sh("elm make src/Main.elm --optimize --output=output/assets/js/elm.js")
+    sh('uglifyjs output/assets/js/elm.js --compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe" | uglifyjs --mangle --output output/assets/js/elm.min.js')
+end
