@@ -46,18 +46,20 @@ update msg model =
     UpdateBool lens v   -> ( { model | character = lens.set v model.character}, Cmd.none)
     DoSave              -> ( model, save (Encode.encode 0 (Encode.object [("key", Encode.string (charname.get model.character)), ("value", Encode.string (characterStringEncoder model.character)) ] ) ) )
     DoLoad key          -> ( model, Cmd.batch [doload key, updatetitle key] )
-    Load value          -> ( { model | character = decodeCharacter value }, Cmd.none )
+    Load value          -> ( model, decodeCharacter value )
+    LoadCharacter c     -> ( { model | character = c }, Cmd.none )
     DoList              -> ( model, dolist ())
     List value          -> ( { model | characterNames = decodeCharacterNames value}, Cmd.none )
     SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterStringEncoder model.character) )
     DoLoadFile          -> ( model, Select.file ["text/json"] FileSelected )
     FileSelected file   -> ( model, Task.perform Load (File.toString file))
+    ConsoleLog message  -> ( model, dolog message)
 
-decodeCharacter : String -> Character
+decodeCharacter : String -> Cmd Msg --Character
 decodeCharacter s =
   case Decode.decodeString characterDecoder s of
-    Ok value -> value
-    Err _ -> initCharacter
+    Ok value -> Task.perform LoadCharacter (Task.succeed value)
+    Err e -> Task.perform ConsoleLog (Task.succeed ((Decode.errorToString e) ++ "\n" ++ s))
 
 -- VIEW
 view : Model -> Html Msg

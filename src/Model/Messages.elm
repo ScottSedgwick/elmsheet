@@ -38,3 +38,5 @@ type Msg
   | SaveData
   | DoLoadFile
   | FileSelected File
+  | ConsoleLog String
+  | LoadCharacter Character
