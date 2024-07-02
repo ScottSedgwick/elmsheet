@@ -1,3 +1,4 @@
+require 'bundler/setup'
 require 'fileutils'
 require 'rake/clean'
 require_relative 'rakelib/json-schema-generator.rb'
