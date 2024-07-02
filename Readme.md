@@ -9,3 +9,9 @@ A D&D Character sheet editor written in Elm.
 * Clone this repository
 * In the root of the repo, use the following command: `rake build`
 * Using a browser, open the `output/index.html` file.
+
+## Pages
+
+This repo publishes a working version of itself at https://scottsedgwick.github.io/elmsheet/
+
+It doesn't actually work yet.
