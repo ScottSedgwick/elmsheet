@@ -13,5 +13,3 @@ A D&D Character sheet editor written in Elm.
 ## Pages
 
 This repo publishes a working version of itself at https://scottsedgwick.github.io/elmsheet/
-
-It doesn't actually work yet.
