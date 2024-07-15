@@ -1,9 +1,11 @@
-module Model.Attack exposing (..)
+module Model.Attack exposing ( Attack, attackEncoder, attackDecoder, initAttack,
+  attackbonus, attackdamage, attackname )
+
+-- THIS MODULE IS AUTO-GENERATED. Do not edit it - change the generator.
 
 import Json.Decode as Decode
-import Json.Decode.Pipeline exposing (..)
+import Json.Decode.Pipeline exposing ( optional, required )
 import Json.Encode as Encode
-import Result exposing (Result(..))
 import Monocle.Lens exposing (Lens)
 
 -- Type definition for Attack
@@ -34,16 +36,13 @@ attackEncoder x = Encode.object
   , ("attackname", Encode.string x.attackname_)
   ]
 
-attackStringEncoder : Attack -> String
-attackStringEncoder x = Encode.encode 0 (attackEncoder x)
-
 -- JSON Decoder for Attack
 
 attackDecoder : Decode.Decoder Attack
 attackDecoder = Decode.succeed Attack
   |> optional "attackbonus" Decode.string ""
   |> optional "attackdamage" Decode.string ""
-  |> optional "attackname" Decode.string ""
+  |> required "attackname" Decode.string
 
 -- Initial value for Attack
 initAttack : Attack

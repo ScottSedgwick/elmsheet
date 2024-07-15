@@ -1,16 +1,20 @@
-module View.Stats exposing (..)
+module View.Stats exposing ( viewStats )
 
-import Html exposing (..)
+import Html exposing ( Html, div, form, header, input, label, li, node, section, span, table, tbody, td, text, th, thead, tr, ul )
 import Html.Attributes exposing (class, for, id, name, placeholder, type_, value, width)
-import Html.Events exposing (..)
+import Html.Events exposing ( onInput )
 import Monocle.Common exposing (list)
 import Monocle.Lens exposing (Lens)
-import Monocle.Optional exposing (fromLens, compose, composeLens)
+import Monocle.Optional exposing ( Optional, fromLens, compose, composeLens)
 
-import Model.Attack exposing (..)
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Attack exposing ( Attack, attackname, attackbonus, attackdamage )
+import Model.Character exposing ( Character, background, charclass, charname, experiencepoints, level, player, race, strength, dexterity, constitution, wisdom, intelligence, charisma, inspiration,
+  strengthProficiency, dexterityProficiency, constitutionProficiency, wisdomProficiency, intelligenceProficiency, charismaProficiency, acrobatics, animalhandling, arcana, athletics, deception, history, 
+  insight, intimidation, investigation, medicine, nature, perception, performance, persuasion, religion, sleightofhand, stealth, survival, passiveperception, passiveinsight, passiveinvestigation, otherprofs, 
+  ac, initiative, speed, maxhp, currhp, temphp, totalhd, remaininghd, deathsavesuccess1, deathsavesuccess2, deathsavesuccess3, deathsavefail1, deathsavefail2, deathsavefail3, attacks, cp, sp, ep, gp, pp, 
+  personality, ideals, bonds, flaws, fullfeatures, equipment )
+import Model.Messages exposing ( Msg(..) )
+import Utils.ViewUtils exposing ( labelInput, labelInputInt, labelTextarea, linkedCheckbox, linkedInputInt, linkedInputOpt, linkedTextarea )
 
 viewStats : Character -> Html Msg
 viewStats c = 
@@ -178,7 +182,10 @@ sectionAttacks c =
 rowAttack : Character -> Int -> Attack -> Html Msg
 rowAttack c n _ =
   let
+    ident : String
     ident = "attack" ++ String.fromInt n
+
+    clens : Optional Character Attack
     clens = compose (fromLens attacks) (list n)
   in
     tr []
@@ -242,7 +249,10 @@ statSaveItem ident statLens profLens c =
 calcSave : (Lens Character Int) -> (Lens Character Bool) -> Character -> Int
 calcSave statLens profLens c = 
   let
+    prof : Int
     prof = if profLens.get c then profBonus c else 0
+
+    stat : Int
     stat = statBonus (statLens.get c)
   in
     prof + stat 
@@ -261,7 +271,10 @@ skillBox caption stat statLens profLens c =
 calcSkillBonus : (Lens Character Int) -> (Lens Character Bool) -> Character -> Int
 calcSkillBonus statLens profLens c =
   let
+    pb : Int
     pb = if (profLens.get c) then profBonus c else 0
+
+    sb : Int
     sb = statBonus (statLens.get c)
   in
     pb + sb

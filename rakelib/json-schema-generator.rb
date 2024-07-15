@@ -40,16 +40,17 @@ class SchemaObject
     end
 
     def generate_file(f)
-        f.write("module #{@namespace}.#{@name} exposing (..)\n\n")
+        f.write("module #{@namespace}.#{@name} exposing ( #{@name}, #{@name.downcase}Encoder, #{@name.downcase}Decoder, init#{@name},\n  #{get_lenses.each_slice(10).map {|a| a.join(', ') }.join(",\n  ")} )\n\n")
+        f.write("-- THIS MODULE IS AUTO-GENERATED. Do not edit it - change the generator.\n\n")
         f.write("import Json.Decode as Decode\n")
-        f.write("import Json.Decode.Pipeline exposing (..)\n")
+        f.write("import Json.Decode.Pipeline exposing ( optional, required )\n")
         f.write("import Json.Encode as Encode\n")
-        f.write("import Result exposing (Result(..))\n")
         f.write("import Monocle.Lens exposing (Lens)\n")
 
         @props.each do |prop|
             if prop.type.start_with?('List ')
-                f.write("import #{@namespace}.#{prop.type[5..-1]} exposing (..)\n")
+                name = prop.type[5..-1]
+                f.write("import #{@namespace}.#{name} exposing ( #{name}, #{name.downcase}Encoder, #{name.downcase}Decoder, init#{name} )\n")
             end
         end
         
@@ -75,6 +76,10 @@ class SchemaObject
         f.write("\n  }\n")
     end
 
+    def get_lenses
+        @props.map { |s| s.name }
+    end
+
     def generate_lenses(f)
         @props.each do |prop|
             f.write(prop.lens(@name))
@@ -86,9 +91,6 @@ class SchemaObject
         f.write("#{decap(@name)}Encoder x = Encode.object\n  [ ")
         f.write(@props.map { |prop| prop.encoder }.join("\n  , "))
         f.write("\n  ]\n")
-
-        f.write("\n#{decap(@name)}StringEncoder : #{name} -> String\n")
-        f.write("#{decap(@name)}StringEncoder x = Encode.encode 0 (#{decap(@name)}Encoder x)\n")
     end
 
     def generate_decoder(f)
@@ -167,7 +169,8 @@ class SchemaProperty
         elsif @type == "Bool"
             "False"
         elsif @type.start_with?("List")
-            "[]"
+            name = @type[5..-1]
+            "[ init#{name}, init#{name}, init#{name}, init#{name}, init#{name} ]"
         else
             "<Unknown Type>"
         end

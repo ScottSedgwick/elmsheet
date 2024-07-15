@@ -1,4 +1,4 @@
-module Model.Messages exposing (..)
+module Model.Messages exposing ( Msg(..), TabName(..), allTabs, tabName )
 
 import File exposing (File)
 import Monocle.Lens exposing (Lens)
@@ -33,7 +33,6 @@ type Msg
   | DoSave
   | DoLoad String
   | Load String
-  | DoList
   | List String
   | SaveData
   | DoLoadFile

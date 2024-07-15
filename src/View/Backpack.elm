@@ -1,13 +1,12 @@
-module View.Backpack exposing (..)
+module View.Backpack exposing ( viewBackpack )
 
-import Html exposing (..)
+import Html exposing ( Html, b, br, form, header, label, node, section, table, text, td, tr )
 import Html.Attributes exposing ( class, for )
-import Html.Events exposing (..)
 import Monocle.Lens exposing (Lens)
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Character exposing ( Character, ammo, bedroll, charname, copper, electrum, flappouch, gold, mainpouch, middlepouch, platinum, pocket1, pocket2, pocket3, pocket4, rope, silver, torches )
+import Model.Messages exposing ( Msg )
+import Utils.ViewUtils exposing ( labelInput, labelTextarea, linkedInput )
 
 viewBackpack : Character -> List (Html Msg)
 viewBackpack c = 

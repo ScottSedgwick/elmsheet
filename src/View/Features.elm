@@ -1,12 +1,11 @@
-module View.Features exposing (..)
+module View.Features exposing ( viewFeatures )
 
-import Html exposing (..)
+import Html exposing ( Html, form, header, li, node, section, ul )
 import Html.Attributes exposing ( class )
-import Html.Events exposing (..)
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Character exposing ( Character, age, charname, eyes, faction, features, fullbackground, hair, height, skin, traits, weight )
+import Model.Messages exposing ( Msg )
+import Utils.ViewUtils exposing ( labelInput, labelTextarea )
 
 viewFeatures : Character -> List (Html Msg)
 viewFeatures c = 

@@ -1,12 +1,11 @@
-module View.PortableHole exposing (..)
+module View.PortableHole exposing ( viewPortableHole )
 
-import Html exposing (..)
+import Html exposing ( Html, b, br, form, header, node, section, text )
 import Html.Attributes exposing (class)
-import Html.Events exposing (..)
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Character exposing ( Character, charname, phitems1, phitems2, potionsgems )
+import Model.Messages exposing ( Msg )
+import Utils.ViewUtils exposing ( labelInput, labelTextarea )
 
 viewPortableHole : Character -> List (Html Msg)
 viewPortableHole c = 

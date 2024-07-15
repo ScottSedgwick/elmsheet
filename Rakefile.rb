@@ -8,6 +8,8 @@ require 'json-schema'
 HTML_FILE     = 'output/index.html'
 CSS_FILES     = Dir['assets/css/*.css']
 CSS_DIR       = 'output/assets/css'
+JS_DIR        = 'output/assets/js/'
+JS_FILES      = Dir['assets/js/*.*']
 JS_FILE       = 'output/assets/js/elm.js'
 JS_MIN_FILE   = 'output/assets/js/elm.min.js'
 IMAGE_FILES   = Dir['assets/images/*.*']
@@ -22,41 +24,46 @@ CLEAN.include(JS_MIN_FILE)
 IMAGE_FILES.each do |f|
     CLEAN.include("#{IMAGE_DIR}/#{File.basename(f)}")
 end
+JS_FILES.each do |f|
+    CLEAN.include("#{JS_DIR}/#{File.basename(f)}")
+end
 
 file HTML_FILE do
     FileUtils.mkdir_p('output')
     FileUtils.cp('assets/index.html', HTML_FILE)
 end
 
-task :css_assets do
+task :assets do
     FileUtils.mkdir_p('output')
     FileUtils.mkdir_p('output/assets')
+end
+
+task :css_assets => [:assets] do
     FileUtils.mkdir_p('output/assets/css')
     CSS_FILES.each do |f|
         FileUtils.cp(f, "#{CSS_DIR}/#{File.basename(f)}")
     end
 end
 
-task :image_assets do
-    FileUtils.mkdir_p('output')
-    FileUtils.mkdir_p('output/assets')
+task :image_assets => [:assets] do
     FileUtils.mkdir_p('output/assets/images')
     IMAGE_FILES.each do |f|
         FileUtils.cp(f, "#{IMAGE_DIR}/#{File.basename(f)}")
     end
 end
 
-task :build => [:clean, :generate, :css_assets, HTML_FILE, :image_assets] do
-    FileUtils.mkdir_p('output')
-    FileUtils.mkdir_p('output/assets')
+task :js_assets => [:assets] do
     FileUtils.mkdir_p('output/assets/js')
+    JS_FILES.each do |f|
+        FileUtils.cp(f, "#{JS_DIR}/#{File.basename(f)}")
+    end
+end
+
+task :build => [:clean, :generate, :css_assets, HTML_FILE, :image_assets, :js_assets] do
     sh("elm make src/Main.elm --output=output/assets/js/elm.js")
 end
 
-task :deploy => [:clean, :generate, :css_assets, HTML_FILE, :image_assets] do
-    FileUtils.mkdir_p('output')
-    FileUtils.mkdir_p('output/assets')
-    FileUtils.mkdir_p('output/assets/js')
+task :deploy => [:clean, :generate, :css_assets, HTML_FILE, :image_assets, :js_assets] do
     sh("elm make src/Main.elm --optimize --output=output/assets/js/elm.js")
     sh('uglifyjs output/assets/js/elm.js --compress "pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe" | uglifyjs --mangle --output output/assets/js/elm.min.js')
     FileUtils.rm('output/assets/js/elm.js')

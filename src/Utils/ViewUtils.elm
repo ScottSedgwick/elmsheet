@@ -1,14 +1,14 @@
-module Utils.ViewUtils exposing (..)
+module Utils.ViewUtils exposing ( labelInput, labelInputInt, linkedInput, linkedInputOpt, linkedInputInt, labelTextarea, linkedTextarea, decodeCharacterNames, toInt, linkedCheckbox )
 
-import Html exposing (..)
+import Html exposing ( Html, input, label, text, textarea )
 import Html.Attributes exposing ( checked, class, for, id, name, placeholder, style, type_, value )
-import Html.Events exposing (..)
+import Html.Events exposing ( onCheck, onInput )
 import Monocle.Lens exposing (Lens)
 import Monocle.Optional exposing (Optional)
 import Json.Decode as Decode
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
+import Model.Character exposing ( Character )
+import Model.Messages exposing (Msg(..))
 
 labelInput : String -> String -> Maybe String -> Character -> (Lens Character String) -> List (Html Msg)
 labelInput ident caption mcls char lens =
@@ -31,6 +31,7 @@ linkedInput ident caption mcls char lens =
 linkedInputOpt : String -> String -> Maybe String -> Character -> (Optional Character String) -> Html Msg
 linkedInputOpt ident caption mcls char lens = 
   let
+    val : String
     val = case lens.getOption char of
             Nothing -> ""
             Just s  -> s
@@ -64,9 +65,6 @@ toInt : String -> Int
 toInt s = case (String.toInt s) of
             Just x  -> x
             Nothing -> 0
-
-toBool : String -> Bool
-toBool s = if (s == "True" || s == "true") then True else False
 
 linkedCheckbox : String -> Lens Character Bool -> Character -> Html Msg
 linkedCheckbox ident lens c = input [ id ident, name ident, type_ "checkbox", checked (lens.get c), onCheck (UpdateBool lens)] []

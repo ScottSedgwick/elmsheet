@@ -1,11 +1,23 @@
-module Model.Character exposing (..)
+module Model.Character exposing ( Character, characterEncoder, characterDecoder, initCharacter,
+  ac, acrobatics, age, ammo, animalhandling, arcana, athletics, attacks, background, bedroll,
+  bonds, charclass, charisma, charismaProficiency, charname, constitution, constitutionProficiency, copper, cp, currhp,
+  deathsavefail1, deathsavefail2, deathsavefail3, deathsavesuccess1, deathsavesuccess2, deathsavesuccess3, deception, dexterity, dexterityProficiency, electrum,
+  ep, equipment, experiencepoints, eyes, faction, features, flappouch, flaws, fullbackground, fullfeatures,
+  gold, gp, hair, height, history, ideals, imagesize, imageurl, initiative, insight,
+  inspiration, intelligence, intelligenceProficiency, intimidation, investigation, level, mainpouch, maxhp, medicine, middlepouch,
+  nature, otherprofs, passiveinsight, passiveinvestigation, passiveperception, perception, performance, personality, persuasion, phitems1,
+  phitems2, platinum, player, pocket1, pocket2, pocket3, pocket4, potionsgems, pp, preparespells,
+  race, religion, remaininghd, rope, silver, skin, sleightofhand, sp, speed, spellability,
+  spellattackb, spellclass, spellsavedc, stealth, strength, strengthProficiency, survival, temphp, torches, totalhd,
+  traits, weight, wisdom, wisdomProficiency )
+
+-- THIS MODULE IS AUTO-GENERATED. Do not edit it - change the generator.
 
 import Json.Decode as Decode
-import Json.Decode.Pipeline exposing (..)
+import Json.Decode.Pipeline exposing ( optional, required )
 import Json.Encode as Encode
-import Result exposing (Result(..))
 import Monocle.Lens exposing (Lens)
-import Model.Attack exposing (..)
+import Model.Attack exposing ( Attack, attackEncoder, attackDecoder, initAttack )
 
 -- Type definition for Character
 
@@ -13,7 +25,6 @@ type alias Character =
   { ac_ : Int
   , acrobatics_ : Bool
   , age_ : String
-  , alignment_ : String
   , ammo_ : String
   , animalhandling_ : Bool
   , arcana_ : Bool
@@ -127,9 +138,6 @@ acrobatics = Lens .acrobatics_ (\b a -> { a | acrobatics_ = b } )
 
 age : Lens Character String
 age = Lens .age_ (\b a -> { a | age_ = b } )
-
-alignment : Lens Character String
-alignment = Lens .alignment_ (\b a -> { a | alignment_ = b } )
 
 ammo : Lens Character String
 ammo = Lens .ammo_ (\b a -> { a | ammo_ = b } )
@@ -441,7 +449,6 @@ characterEncoder x = Encode.object
   [ ("ac", Encode.int x.ac_)
   , ("acrobatics", Encode.bool x.acrobatics_)
   , ("age", Encode.string x.age_)
-  , ("alignment", Encode.string x.alignment_)
   , ("ammo", Encode.string x.ammo_)
   , ("animalhandling", Encode.bool x.animalhandling_)
   , ("arcana", Encode.bool x.arcana_)
@@ -545,9 +552,6 @@ characterEncoder x = Encode.object
   , ("wisdomProficiency", Encode.bool x.wisdomProficiency_)
   ]
 
-characterStringEncoder : Character -> String
-characterStringEncoder x = Encode.encode 0 (characterEncoder x)
-
 -- JSON Decoder for Character
 
 characterDecoder : Decode.Decoder Character
@@ -555,12 +559,11 @@ characterDecoder = Decode.succeed Character
   |> optional "ac" Decode.int 0
   |> optional "acrobatics" Decode.bool False
   |> optional "age" Decode.string ""
-  |> optional "alignment" Decode.string ""
   |> optional "ammo" Decode.string ""
   |> optional "animalhandling" Decode.bool False
   |> optional "arcana" Decode.bool False
   |> optional "athletics" Decode.bool False
-  |> optional "attacks" (Decode.list attackDecoder) []
+  |> optional "attacks" (Decode.list attackDecoder) [ initAttack, initAttack, initAttack, initAttack, initAttack ]
   |> optional "background" Decode.string ""
   |> optional "bedroll" Decode.string ""
   |> optional "bonds" Decode.string ""
@@ -664,12 +667,11 @@ initCharacter =
   { ac_ = 0
   , acrobatics_ = False
   , age_ = ""
-  , alignment_ = ""
   , ammo_ = ""
   , animalhandling_ = False
   , arcana_ = False
   , athletics_ = False
-  , attacks_ = []
+  , attacks_ = [ initAttack, initAttack, initAttack, initAttack, initAttack ]
   , background_ = ""
   , bedroll_ = ""
   , bonds_ = ""

@@ -1,12 +1,11 @@
-module View.Spellcasting exposing (..)
+module View.Spellcasting exposing ( viewSpellcasting )
 
-import Html exposing (..)
+import Html exposing ( Html, form, header, li, node, section, ul )
 import Html.Attributes exposing (class)
-import Html.Events exposing (..)
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Character exposing ( Character, spellclass, spellability, spellsavedc, spellattackb, preparespells )
+import Model.Messages exposing ( Msg )
+import Utils.ViewUtils exposing ( labelInput )
 
 viewSpellcasting : Character -> List (Html Msg)
 viewSpellcasting c = 

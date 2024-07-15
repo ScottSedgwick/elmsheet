@@ -1,4 +1,4 @@
-port module Ports.Ports exposing (..)
+port module Ports.Ports exposing ( save, doload, load, dolist, listChars, updatetitle, dolog )
 
 port save : String -> Cmd msg
 port doload : String -> Cmd msg

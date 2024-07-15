@@ -15,7 +15,7 @@
                     "type": "string"
                 }
             },
-            "required": [],
+            "required": [ "attackname" ],
             "type": "object"
         },
         "Character": {
@@ -28,9 +28,6 @@
                     "type": "boolean"
                 },
                 "age": {
-                    "type": "string"
-                },
-                "alignment": {
                     "type": "string"
                 },
                 "ammo": {

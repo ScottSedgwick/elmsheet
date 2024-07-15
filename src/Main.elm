@@ -1,25 +1,26 @@
-module Main exposing (..)
+module Main exposing ( main )
 
 import Browser
 import File
 import File.Download as Save
 import File.Select as Select
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (..)
+import Html exposing ( Attribute, Html, button, div, node, table, td, text, tr )
+import Html.Attributes exposing ( attribute, class, id, style )
+import Html.Events exposing ( onClick )
 import Json.Decode as Decode
 import Json.Encode as Encode
 import Task
 
-import Model.Character exposing (..)
-import Model.Messages exposing (..)
-import Ports.Ports exposing (..)
-import View.Backpack exposing (..)
-import View.Features exposing (..)
-import View.PortableHole exposing (..)
-import View.Spellcasting exposing (..)
-import View.Stats exposing (..)
-import Utils.ViewUtils exposing (..)
+import Model.Character exposing ( Character, characterDecoder, characterEncoder, charname, imagesize, imageurl, initCharacter )
+import Model.Messages exposing ( Msg(..), TabName(..), allTabs, tabName )
+import Ports.Ports exposing ( save, doload, load, dolist, listChars, updatetitle, dolog )
+import View.Backpack exposing ( viewBackpack )
+import View.Features exposing ( viewFeatures )
+import View.PortableHole exposing ( viewPortableHole )
+import View.Spellcasting exposing ( viewSpellcasting )
+import View.Stats exposing ( viewStats )
+import Utils.EncodeUtils exposing ( stringEncoder )
+import Utils.ViewUtils exposing ( decodeCharacterNames, toInt )
 
 -- MAIN
 main : Program () Model Msg
@@ -44,13 +45,12 @@ update msg model =
     UpdateOptStr lens v -> ( { model | character = lens.set v model.character }, Cmd.none )
     UpdateInt lens v    -> ( { model | character = lens.set (toInt v) model.character }, Cmd.none )
     UpdateBool lens v   -> ( { model | character = lens.set v model.character}, Cmd.none)
-    DoSave              -> ( model, save (Encode.encode 0 (Encode.object [("key", Encode.string (charname.get model.character)), ("value", Encode.string (characterStringEncoder model.character)) ] ) ) )
+    DoSave              -> ( model, save (Encode.encode 0 (Encode.object [("key", Encode.string (charname.get model.character)), ("value", Encode.string ((stringEncoder characterEncoder) model.character)) ] ) ) )
     DoLoad key          -> ( model, Cmd.batch [doload key, updatetitle key] )
     Load value          -> ( model, decodeCharacter value )
     LoadCharacter c     -> ( { model | character = c }, Cmd.none )
-    DoList              -> ( model, dolist ())
     List value          -> ( { model | characterNames = decodeCharacterNames value}, Cmd.none )
-    SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" (characterStringEncoder model.character) )
+    SaveData            -> ( model, Save.string (charname.get model.character ++ ".json") "text/json" ((stringEncoder characterEncoder) model.character) )
     DoLoadFile          -> ( model, Select.file ["text/json"] FileSelected )
     FileSelected file   -> ( model, Task.perform Load (File.toString file))
     ConsoleLog message  -> ( model, dolog message)
@@ -93,6 +93,7 @@ loadButton s = tr [] [ td [] [ button [onClick (DoLoad s), class "loadbutton"] [
 tabButton : TabName -> TabName -> Html Msg
 tabButton a n = 
   let
+    c : String
     c = if (a == n) then " active" else ""
   in
     button [ class ("tablink tablinks" ++ c), onClick (ChangeTab n) ] [ text (tabName n) ]
@@ -100,7 +101,9 @@ tabButton a n =
 tabBody : Character -> TabName -> TabName -> Html Msg
 tabBody c a n = 
   let
+    attrs : List (Attribute Msg)
     attrs = if (a == n) then [ id (tabName n), class "tabcontent", style "display" "block" ] else [ id (tabName n), class "tabcontent" ]
+    tabView : List (Html Msg)
     tabView = 
       case n of
         Stats -> [viewStats c]
